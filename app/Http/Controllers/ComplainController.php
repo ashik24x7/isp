@@ -3,18 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Validator;
-
 use App\Http\Requests;
-
 use App\Complain;
-
 use DB;
-
 use Auth;
-
 use Carbon\Carbon;
+
 
 class ComplainController extends Controller
 {

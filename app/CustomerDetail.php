@@ -2,12 +2,14 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class CustomerDetail extends Authenticatable
+class CustomerDetail extends Model implements Authenticatable
 {
+	use \Illuminate\Auth\Authenticatable;
     
-    public function customer_id(){
+    public function customer(){
     	return $this->hasOne(Customer::class);
     }
 

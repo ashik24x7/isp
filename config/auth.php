@@ -40,9 +40,13 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'customerAuth' => [
+        'customer' => [
             'driver' => 'session',
             'provider' => 'customers',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
         ],
 
         'api' => [
@@ -76,6 +80,10 @@ return [
         'customers' => [
             'driver' => 'eloquent',
             'model' => App\CustomerDetail::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
         ],
 
         // 'users' => [
@@ -111,7 +119,13 @@ return [
             'expire' => 60,
         ],
         'customers' => [
-            'provider' => 'users',
+            'provider' => 'customers',
+            'email' => 'auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'addmins' => [
+            'provider' => 'addmins',
             'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,

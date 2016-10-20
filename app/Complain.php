@@ -22,7 +22,7 @@ class Complain extends Model
 	protected $dates = [];
 
 	public function scopeLatest($query){
-		$query->orderBy('created_at','DESC');
+		$query->whereDay->('created_at', date('d'))->orderBy('created_at','DESC');
 	}
 
 	// public function setCreatedAtAttribute($date){

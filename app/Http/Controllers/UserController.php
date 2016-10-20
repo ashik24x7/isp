@@ -13,7 +13,9 @@ use App\User;
 class UserController extends Controller
 {
 
-    
+    public function __construct(){
+        // $this->middleware('auth',['except' => ['logout','userLoginView']]);
+    }
     
     public function userRegistration(Request $request){
 
@@ -58,7 +60,7 @@ class UserController extends Controller
 
         
         $data = $request->only('username','password');
-        if(\Auth::attempt($data)){
+        if(\Auth::guard('admin')->attempt($data)){
             return redirect()->to('home');
         }else{
             return redirect()->to('/login')->with('message','Username/Password Wrong!');
@@ -71,7 +73,7 @@ class UserController extends Controller
     }
 
     public function logout(){
-        \Auth::logout();
+        auth()->guard('admin')->logout();
         return redirect()->to('login'); 
     }
 

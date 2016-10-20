@@ -1,7 +1,7 @@
-@extends('customer-layout')
+@extends('layout-without-menu')
 
 @section('title')
-    <title>Horizon-Admin - Admin</title>
+    <title>Exord Online Limited - Admin</title>
 @stop
 
 
@@ -28,14 +28,13 @@
 
 
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="mail-side-bar">
-                        <div class="text-center margin-b-30">
+                        <!-- <div class="text-center margin-b-30">
                             <a href="#" class="btn btn-danger btn-3d">Compose Complain</a>
-                        </div>
+                        </div> -->
                         <ul class="list-unstyled">
-                            <li><a href="#">Complain Inbox <sapn>(1)</sapn></a></li>
-                            <li><a href="#">Sent Complain</a></li>
+                            <li><a href="complains">Complains <sapn>(1)</sapn></a></li>
                             <!-- <li><a href="#">Draft</a></li>
                             <li><a href="#">Archives</a></li>
                             <li><a href="#">Spam</a></li> -->
@@ -58,7 +57,7 @@
                         </ul> -->
                     </div>
                 </div>
-                <div class="col-md-9 compose_form">
+                <div class="col-md-10 compose_form">
                     @if(session('message'))
                         <p class="error"> {{ session('message') }} </p>
                     @endif
@@ -106,7 +105,7 @@
                         <div class="form-group">
                             <div class="col-md-12">
                             <br>
-                                <button type="submit" class="btn btn-primary btn-lg">Received</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                             </div>
                         </div>
                     </form>

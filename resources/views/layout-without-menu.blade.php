@@ -225,143 +225,35 @@
                         <ul class="nav metismenu" id="side-menu">
                             <li class="nav-header">
                                 <div class="dropdown side-profile text-left"> 
+                                @if(\Auth::check())
                                     <span style="display: block;">
-                                        <img alt="image" class="img-circle" src="{{ url('photo/customer-photo/'.auth()->guard('customer')->user()->customer_photo) }}" width="40">
+                                    @if(isset(\Auth::user()->customer_photo))
+                                        <img alt="image" class="img-circle" src="{{ url('photo/customer-photo/'.\Auth::user()->customer_photo) }}" width="40">
+                                    @else
+                                        <img alt="image" class="img-circle" src="images/avtar-1.jpg" width="40">
+
+                                    @endif
                                     </span>
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                        <span class="clear" style="display: block;"> <span class="block m-t-xs"> <strong class="font-bold">{{ auth()->guard('customer')->user()->username}}  <b class="caret"></b></strong>
+                                        <span class="clear" style="display: block;"> <span class="block m-t-xs"> <strong class="font-bold">{{ \Auth::user()->username}}  <b class="caret"></b></strong>
                                             </span></span> </a>
+                                @endif
                                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                        <li><a href="customer-home"><i class="fa fa-user"></i>My Profile</a></li>
+                                        <li><a href="user_profile"><i class="fa fa-user"></i>My Profile</a></li>
                                         <li><a href="#"><i class="fa fa-calendar"></i>My Calendar</a></li>                         
                                         <li><a href="#"><i class="fa fa-envelope"></i>My Inbox</a></li>
                                         <li><a href="#"><i class="fa fa-barcode"></i>My Task</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#"><i class="fa fa-lock"></i>Screen lock</a></li>
-                                        @if(auth()->guard('customer')->check())
+                                        @if(\Auth::check())
                                         <li><a href="login"><i class="fa fa-key"></i>Logout</a></li>
                                         @endif
                                     </ul>
                                 </div>
                             </li>
                             <li class="active">
-                                <a href="customer-home"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
-                                
-                            </li>
-                            <li>
-                                <a href="mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Complainbox </span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="compose-complain">Compose Complain</a></li>
-                                    <li><a href="complainbox">Inbox</a></li>
-                                    <!-- <li><a href="mail_detail">Email view</a></li> -->
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-bar-chart"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="flot_charts">Flot charts</a></li>
-                                    <li><a href="morris_js">Morris.js</a></li>
-                                    <li><a href="chart_js">Chart.js</a></li>
-                                    <li><a href="chartist">Chartist</a></li>
-                                    <li><a href="chart_sparkline">Sparkline</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="form_basic">Basic form</a></li>
-                                    <li><a href="form_advanced">Advanced form</a></li>
-                                    <li><a href="form_wizard">Wizard form</a></li>
-                                    <li><a href="form_file_upload">File upload</a></li>
-                                    <li><a href="form_text_editor">Text editor</a></li>
-                                    <li><a href="form_inline_edit">Inline edit</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="lockscreen">Lockscreen</a></li>
-                                    <li><a href="login">Login</a></li>
-                                    <li><a href="register">Register</a></li>
-                                    <li><a href="404">404 Page</a></li>
-                                    <li><a href="empty_page">Empty page</a></li>
-                                    <li><a href="gallery">gallery</a></li>
-                                    <li><a href="price_tables">Price tables</a></li>
-                                    <li><a href="page_contact">Contact Page</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">E-commerce</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="orders">orders</a></li>
-                                    <li><a href="order-view">order View</a></li>
-                                    <li><a href="products">Products</a></li>
-
-
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">UI Elements</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="typography">Typography</a></li>
-                                    <li><a href="icons">Icons</a></li>
-                                    <li><a href="buttons">Buttons</a></li>
-                                    <li><a href="video">Video</a></li>
-                                    <li><a href="tabs_panels">Panels</a></li>
-                                    <li><a href="tabs">Tabs</a></li>
-                                    <li><a href="alert_notifications">Alert & notifications</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="grid_options"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Tables</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="table_basic">Static Tables</a></li>
-                                    <li><a href="table_data_tables">Data Tables</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Users</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="user_profile">profile</a></li>
-                                    <li><a href="user_list">User list</a></li>
-
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-map-marker"></i> <span class="nav-label">maps</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="google_maps">Google maps</a></li>
-                                    <li><a href="vector_maps">Vector Maps</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">Blog</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="blog_list">Blog list</a></li>
-                                    <li><a href="blog_post">Blog post</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="calendar"><i class="fa fa-calendar"></i>  <span class="nav-label">Calendar </span></a></li>
-
-                            <li>
-                                <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li>
-                                        <a href="#">Third Level <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="#">Third Level Item</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Second Level Item</a></li>
-                                </ul>
-                            </li>                                    
+                                <a href="home"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
+                            </li>                             
                         </ul>
 
                     </div>

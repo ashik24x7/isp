@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfNotCustomer
+class RedirectIfNotAdmin
 {
     /**
      * Handle an incoming request.
@@ -14,11 +14,11 @@ class RedirectIfNotCustomer
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = 'customer')
+    public function handle($request, Closure $next, $guard = 'admin')
     {
 
         if (!Auth::guard($guard)->check()) {
-            return redirect('/customer-login');
+            return redirect('/login');
         }
 
         return $next($request);

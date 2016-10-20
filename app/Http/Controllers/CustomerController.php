@@ -13,7 +13,7 @@ use Auth;
 class CustomerController extends Controller
 {
     public function __construct(){
-        $this->middleware('customerAuth');
+        // $this->middleware('customerAuth');
     }
 
 	public function index(){
@@ -83,7 +83,7 @@ class CustomerController extends Controller
 
 
     public function dashboard(){
-        $customer = Auth::user();
+        $customer = Auth::guard('customer')->user();
         // dd($customer);
         return view('user-profile', compact('customer'));
     }
@@ -102,17 +102,22 @@ class CustomerController extends Controller
 
 
         $data = $request->only('email','password');
-        
-        if(\Auth::attempt($data)){
+
+        if(\Auth::guard('customer')->attempt($data)){
             return redirect()->to('customer-home');
         }else{
-            return redirect()->to('/customer-login')->with('message','Email/Password Wrong!');
+            return redirect()->to('/customer-login')->withInput()->with('message','Email/Password Wrong!');
         }
     }
 
 
     public function customerLoginView(){
         return view('customer-login');
+    }
+
+    public function customerLogout(){
+        \Auth::guard('customer')->logout();
+        return redirect()->to('/customer-login');
     }
 
 

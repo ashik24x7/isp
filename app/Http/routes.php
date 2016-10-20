@@ -12,33 +12,35 @@
 */
 
 
-Route::post('/register','UserController@userRegistration');
-Route::get('/register','UserController@userView');
+
 
 Route::get('/login','UserController@userLoginView');
 Route::post('/login','UserController@userLogin');
-Route::get('/logout','UserController@logout');
 
-// Route::get('/home',['middleware' => 'auth','as'=>'home','uses'=>'controllerIndex@viewIndex']);
+Route::group(['middleware' => 'admin'],function(){
+	Route::resource('customer-register','CustomerController',['only' => ['index']]);
+	Route::post('find-user-data','ComplainController@findUserData');
+	Route::get('complains','ComplainController@complains');
+	Route::get('receive-complain','ComplainController@receiveComplain');
+	Route::post('receive-complain','ComplainController@postReceiveComplain');
+	Route::resource('compose-complain','ComplainController');
+	Route::post('/register','UserController@userRegistration');
+	Route::get('/register','UserController@userView');
+	Route::get('/logout','UserController@logout');
+});
 
-
-Route::resource('customer-register','CustomerController');
-Route::get('customer-home','CustomerController@dashboard');
 
 Route::get('customer-login','CustomerController@customerLoginView');
 Route::post('customer-login','CustomerController@customerLogin');
 
-Route::resource('compose-complain','ComplainController');
-Route::get('receive-complain','ComplainController@receiveComplain');
-Route::post('receive-complain','ComplainController@postReceiveComplain');
-Route::get('complains','ComplainController@complains');
-
-Route::post('find-user-data','ComplainController@findUserData');
+Route::group(['middleware' => 'customer'],function(){
+	Route::get('customer-home','CustomerController@dashboard');
+	Route::get('customer-logout','CustomerController@customerLogout');
+});
 
 
 
 
 
-Route::auth();
 
-Route::get('/home', 'HomeController@index');
+

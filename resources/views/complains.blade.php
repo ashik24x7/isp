@@ -1,11 +1,15 @@
-@extends('layout')
+@extends('layout-without-menu')
 
 @section('title')
-    <title>Horizon-Admin - Admin</title>
+    <title>Exord Online Limited - Admin</title>
 @stop
+
+
 
 @section('header')
     <link rel="stylesheet" href="css/nanoscroller.css">
+    <link rel="stylesheet" href="css/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" href="css/wysiwyg-color.css" />
 @stop
 
 @section('wrapper')
@@ -14,127 +18,65 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="page-title">
-                                <h1>Mail box <small></small></h1>
+                                <h1>Complain Management System <small></small></h1>
                                 <ol class="breadcrumb">
                                     <li><a href="#"><i class="fa fa-home"></i></a></li>
-                                    <li class="active">Inbox</li>
+                                    <li class="active">Complain Log</li>
                                 </ol>
                             </div>
                         </div>
                     </div><!-- end .page title-->
-
-
-
                     <div class="row">
-                          <div class="col-md-3">
-                        <div class="mail-side-bar">
-                            <div class="text-center margin-b-30">
-                                <a href="#" class="btn btn-danger btn-3d">Compose</a>
-                            </div>
-                            <ul class="list-unstyled">
-                                <li class="lables">Folders</li>
-                                <li><a href="#">Inbox <sapn>(1)</sapn></a></li>
-                                <li><a href="#">Sent Mail</a></li>
-                                <li><a href="#">Draft</a></li>
-                                <li><a href="#">Archives</a></li>
-                                <li><a href="#">Spam</a></li>
-                            </ul>
-                           <!--  <ul class="list-unstyled">
-                                <li class="lables">Categories</li>
-                                <li><a href="#">Work</a></li>
-                                <li><a href="#">Documents</a></li>
-                                <li><a href="#">Social</a></li>
-                                <li><a href="#">Advertisement</a></li>
-                                <li><a href="#">Clients</a></li>
-                            </ul>
-                            <ul class="list-inline tags ">
-                                <li class="lables">Tags</li>
-                                <li><a href="#">Family</a></li>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Music</a></li>
-                                <li><a href="#">Photography</a></li>
-                                <li><a href="#">Fashion</a></li>
-                            </ul> -->
-                        </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="row">
-                            <div class="col-sm-6 mail-box-row-2">
-                                <div style="margin-right:10px" class="btn-group pull-left">
-                                    <div class="btn btn-sm btn-default bg-amber">
-                                        <input type="checkbox" style="margin:0 5px;padding:0;position:relative;top:2px;">All</div>
-                                    <button type="button" class="btn btn-sm btn-default dropdown-toggle bg-amber" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">None</a>
-                                        </li>
-                                        <li><a href="#">read</a>
-                                        </li>
-                                        <li><a href="#">Unread</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                        <div class="col-md-12">
+                            <div class="table-responsive table-commerce">
+                                <table id="basic-datatables" class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:50px">
+                                                <strong>SL</strong>
+                                            </th>
+                                            <th>
+                                                <strong>EXORD ID</strong>
+                                            </th>
+                                            <th style="width:100px">
+                                                <strong>TIME</strong>
+                                            </th>
+                                            <th>
+                                                <strong>NUMBER</strong>
+                                            </th>
+                                            <th>
+                                                <strong>CONNECTED FROM</strong>
+                                            </th>
+                                            <th>
+                                                <strong>PROBLEM DETAILS</strong>
+                                            </th>
+                                            <th>
+                                                <strong>RECEIVED BY</strong>
+                                            </th>
+                                            <th>
+                                                <strong>SUPPORT GIVEN BY</strong>
+                                            </th>
+                                            <th>
+                                                <strong>SUPPORT TIME</strong>
+                                            </th>
+                                            <th class="text-center">
+                                                <strong>STATUS</strong>
+                                            </th>
 
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-
-                                <div style="margin-right:10px" class="btn-group pull-left">
-                                    <button type="button" class="btn btn-sm btn-default dropdown-toggle bg-amber" data-toggle="dropdown">More
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-ban"></i> Spam</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <button style="margin-right:10px" type="button" data-color="#39B3D7" data-opacity="0.95" class="btn btn-sm btn-default button test pull-left bg-amber">
-                                    <span class="fa fa-refresh"></span>&nbsp;&nbsp;Refresh</button>
-                            </div>
-
-
-                            <div class="col-sm-6">
-                                <div class="btn-group  pull-right ">
-                                    <button type="button" class="btn btn-sm btn-default bg-amber">
-                                        <span class="fa fa-angle-left"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default btn-sm bg-amber">
-                                        <span class="fa fa-angle-right"></span>
-                                    </button>
-                                </div>
-
-                                <div class="btn-group pull-right " style="margin-right:10px;">
-                                    <button type="button" class="btn btn-default btn-sm bg-amber">1-50 of 124</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="table-responsive">
-                            <!-- THE MESSAGES -->
-                            <table class="table table-mailbox">
-                                <tbody>
-                                @if(isset($complains))
-                                    @foreach($complains as $complain)
-                                    <tr class="unread">
-                                        <td class="small-col">
-                                            <input type="checkbox">
-                                        </td>
-                                        <td class="small-col"><i class="fa fa-star"></i>
-                                        </td>
-                                        <td class="name">
-                                            <a href="#">
-                                                <img alt="" class="img-circle star img-responsive" src="images/avtar-1.jpg">
-                                            </a>
-                                        </td>
-                                        <td>{{ $complain->username }}</td>
-                                        <td class="subject">
-                                            <p class="email-summary">
-                                                <?php $texts = unserialize($complain->complain); $num = 1; ?>
+                                    @if(isset($complains))
+                                        <?php $sl = 1; ?>
+                                        @foreach($complains as $complain)
+                                        <tr>
+                                            <td>{{ $sl }}</td>
+                                            <td>{{ $complain->user_id }}</td>
+                                            <td>{{ date("h:i A", strtotime($complain->created_at)) }}</td>
+                                            <td>{{ $complain->contact_no }}</td>
+                                            <td>{{ $complain->contact_no }}</td>
+                                            <td><?php $texts = unserialize($complain->complain); $num = 1; ?>
                                                 @foreach($texts as $text)
                                                     @if($num == 1)
                                                         <strong>{{$text}}</strong>
@@ -143,31 +85,33 @@
                                                         {{$text}}
                                                     @endif
                                                 @endforeach
-                                            </p>
-                                        </td>
-                                        <td class="time text-right">{{ $complain->created_at}}</td>
-                                    </tr>
-                                    @endforeach
-                                @endif
-
-                                    <!-- END OF THREE -->
-
-
-                                </tbody></table>
+                                            </td>
+                                            <td>{{ $complain->received_by }}</td>
+                                            <td>{{ $complain->support_given_by }}</td>
+                                            <td>{{ date("h:i A", strtotime($complain->updated_at)) }}</td>
+                                            <?php $sl++; ?>
+                                            <td class="text-center">
+                                                <span class="label label-info">Standby</span>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    @endif
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div> 
             </div>
 @stop
-
 @section('script')
-        
-        <script src="js/jquery.flot.min.js"></script>
-        <script src="js/jquery.flot.resize.min.js"></script>
-        <script src="js/jquery.flot.time.min.js"></script>
-        <script src="js/jquery.flot.threshold.js"></script>
-        <script src="js/jquery.flot.axislabels.js"></script>
+        <!--page scripts-->
+        <script src="js/data-tables/jquery.dataTables.js"></script>
+        <script src="js/data-tables/dataTables.tableTools.js"></script>
+        <script src="js/data-tables/dataTables.bootstrap.js"></script>
+        <script src="js/data-tables/dataTables.responsive.js"></script>
+        <script src="js/data-tables/tables-data.js"></script>
+        <!-- Google Analytics:  -->
         <script>
             (function (i, s, o, g, r, a, m)
             {
