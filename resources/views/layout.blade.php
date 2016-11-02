@@ -225,12 +225,13 @@
                         <ul class="nav metismenu" id="side-menu">
                             <li class="nav-header">
                                 <div class="dropdown side-profile text-left"> 
-                                @if(\Auth::check())
+                                @if(auth()->guard('admin')->check())
+
                                     <span style="display: block;">
-                                        <img alt="image" class="img-circle" src="{{ url('photo/customer-photo/'.\Auth::user()->customer_photo) }}" width="40">
+                                        <img alt="image" class="img-circle" src="{{ url('photo/admin-photo/'.auth()->guard('admin')->user()->photo) }}" width="40">
                                     </span>
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                        <span class="clear" style="display: block;"> <span class="block m-t-xs"> <strong class="font-bold">{{ \Auth::user()->username}}  <b class="caret"></b></strong>
+                                        <span class="clear" style="display: block;"> <span class="block m-t-xs"> <strong class="font-bold">{{ auth()->guard('admin')->user()->username}}  <b class="caret"></b></strong>
                                             </span></span> </a>
                                 @endif
                                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -240,20 +241,14 @@
                                         <li><a href="#"><i class="fa fa-barcode"></i>My Task</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#"><i class="fa fa-lock"></i>Screen lock</a></li>
-                                        @if(\Auth::check())
-                                        <li><a href="login"><i class="fa fa-key"></i>Logout</a></li>
+                                        @if(auth()->guard('admin')->check())
+                                        <li><a href="logout"><i class="fa fa-key"></i>Logout</a></li>
                                         @endif
                                     </ul>
                                 </div>
                             </li>
                             <li class="active">
-                                <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse">
-                                    <li><a href="/">Dashboard </a></li>
-
-
-
-                                </ul>
+                                <a href="/home"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
                             </li>
                             <li>
                                 <a href="mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="fa arrow"></span></a>

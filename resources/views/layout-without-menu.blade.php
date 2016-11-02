@@ -11,12 +11,12 @@
         
 
         <!-- Bootstrap -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/waves.min.css" type="text/css" rel="stylesheet">
-        <link href="css/menu-light.css" type="text/css" rel="stylesheet">
-        <link href="css/style.css" type="text/css" rel="stylesheet">
-        <link href="css/custom.css" type="text/css" rel="stylesheet">
-        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/waves.min.css" type="text/css" rel="stylesheet">
+        <link href="/css/menu-light.css" type="text/css" rel="stylesheet">
+        <link href="/css/style.css" type="text/css" rel="stylesheet">
+        <link href="/css/custom.css" type="text/css" rel="stylesheet">
+        <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -225,17 +225,13 @@
                         <ul class="nav metismenu" id="side-menu">
                             <li class="nav-header">
                                 <div class="dropdown side-profile text-left"> 
-                                @if(\Auth::check())
-                                    <span style="display: block;">
-                                    @if(isset(\Auth::user()->customer_photo))
-                                        <img alt="image" class="img-circle" src="{{ url('photo/customer-photo/'.\Auth::user()->customer_photo) }}" width="40">
-                                    @else
-                                        <img alt="image" class="img-circle" src="images/avtar-1.jpg" width="40">
+                                @if(auth()->guard('admin')->check())
 
-                                    @endif
+                                    <span style="display: block;">
+                                        <img alt="image" class="img-circle" src="{{ url('photo/admin-photo/'.auth()->guard('admin')->user()->photo) }}" width="40">
                                     </span>
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                        <span class="clear" style="display: block;"> <span class="block m-t-xs"> <strong class="font-bold">{{ \Auth::user()->username}}  <b class="caret"></b></strong>
+                                        <span class="clear" style="display: block;"> <span class="block m-t-xs"> <strong class="font-bold">{{ auth()->guard('admin')->user()->username}}  <b class="caret"></b></strong>
                                             </span></span> </a>
                                 @endif
                                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -245,15 +241,44 @@
                                         <li><a href="#"><i class="fa fa-barcode"></i>My Task</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#"><i class="fa fa-lock"></i>Screen lock</a></li>
-                                        @if(\Auth::check())
-                                        <li><a href="login"><i class="fa fa-key"></i>Logout</a></li>
+                                        @if(auth()->guard('admin')->check())
+                                        <li><a href="/logout"><i class="fa fa-key"></i>Logout</a></li>
                                         @endif
                                     </ul>
                                 </div>
                             </li>
+                            <li>
+                                <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
+                            </li>
                             <li class="active">
-                                <a href="home"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
-                            </li>                             
+                                <a href=""><i class="fa fa-envelope"></i> <span class="nav-label">Complain Detail</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level active">
+                                    <li><a href="/receive-complain">Compose</a></li> 
+                                    <?php $total = \App\Complain::whereNull('solved_by')->today()->count(); ?>
+                                    <li><a href="/complains/today"><b
+                                    @if(!empty($total))
+                                     style="font-weight: 700"
+                                    @endif;
+                                     >View Complains ({{$total}}) </b></a></li>
+                                    <!-- <li><a href="/receive-complain">General Query</a></li>  -->
+                                    
+                                    <li><a href="/complains/all">Complain History</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-bar-chart"></i> <span class="nav-label">Billings Detail</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                                    <li><a href="/complains/all">Complain History</a></li>
+                                </ul>
+                            </li>
+                             <li>
+                                <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Customers Detail</span></span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="/customer-register">Customer Register</a></li>
+                                    <li><a href="/customers">All Customers</a></li>
+                                    <li><a href="/add-customer-into-exord-id">Add Into Exord ID</a></li>
+                                </ul>
+                            </li>                           
                         </ul>
 
                     </div>
@@ -265,14 +290,14 @@
 
         </section>
 
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="js/metisMenu.min.js"></script>
-        <script src="js/jquery.nanoscroller.min.js"></script>
-        <script src="js/jquery-jvectormap-1.2.2.min.js"></script>
-        <script src="js/pace.min.js"></script>
-        <script src="js/waves.min.js"></script>
-        <script src="js/jquery-jvectormap-world-mill-en.js"></script>
+        <script type="text/javascript" src="/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/js/metisMenu.min.js"></script>
+        <script src="/js/jquery.nanoscroller.min.js"></script>
+        <script src="/js/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="/js/pace.min.js"></script>
+        <script src="/js/waves.min.js"></script>
+        <script src="/js/jquery-jvectormap-world-mill-en.js"></script>
         <!--        <script src="js/jquery.nanoscroller.min.js"></script>-->
         <script type="text/javascript" src="js/custom.js"></script>
 

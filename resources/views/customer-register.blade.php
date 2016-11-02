@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout-without-menu')
 
 
 @section('title')

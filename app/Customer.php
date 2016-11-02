@@ -4,9 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model implements Authentic
+class Customer extends Model
 {
+
+	protected $fillable = [];
+	protected $hidden = [];
+	protected $dates = [];
+
+    
     public function customer(){
-    	return $this->hasOne(CustomerDetail::class);
-    }
+		return $this->belongsTo('App\CustomerDetail','fk_user_id');
+	}
 }

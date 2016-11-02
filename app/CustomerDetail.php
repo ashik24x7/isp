@@ -9,10 +9,6 @@ class CustomerDetail extends Model implements Authenticatable
 {
 	use \Illuminate\Auth\Authenticatable;
     
-    public function customer(){
-    	return $this->hasOne(Customer::class);
-    }
-
     protected $fillable =[
 		'ip',
 		'password',

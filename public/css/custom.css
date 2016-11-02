@@ -18,3 +18,10 @@
     padding: 3px 10px 4px;
     border-radius: 5px;
 }
+
+.form-control{
+    color: #000;
+}
+input.form-control{
+    color:#000 !important;
+}

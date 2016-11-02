@@ -14,19 +14,36 @@
 
 
 
+Route::get('/',function(){
+	return view('login');
+});
+
 Route::get('/login','UserController@userLoginView');
 Route::post('/login','UserController@userLogin');
 
+Route::post('/register','UserController@userRegistration');
+Route::get('/register','UserController@userView');
+
 Route::group(['middleware' => 'admin'],function(){
-	Route::resource('customer-register','CustomerController',['only' => ['index']]);
-	Route::post('find-user-data','ComplainController@findUserData');
-	Route::get('complains','ComplainController@complains');
-	Route::get('receive-complain','ComplainController@receiveComplain');
-	Route::post('receive-complain','ComplainController@postReceiveComplain');
-	Route::resource('compose-complain','ComplainController');
-	Route::post('/register','UserController@userRegistration');
-	Route::get('/register','UserController@userView');
+	Route::resource('customer-register','CustomerController',['only' => ['index','store']]);
+	Route::post('/find-user-data','ComplainController@findUserData');
+	Route::get('/complains/{data}','ComplainController@complains');
+	Route::get('/receive-complain','ComplainController@receiveComplain');
+	Route::post('/receive-complain','ComplainController@postReceiveComplain');
+	Route::resource('/compose-complain','ComplainController');
 	Route::get('/logout','UserController@logout');
+	Route::get('/solved/{id}','ComplainController@solved');
+	
+	Route::get('/home',function(){
+		return view('home');
+	});
+
+	Route::get('/edit-complain/{id}','ComplainController@viewEditComplain');
+	Route::post('/edit-complain/{id}','ComplainController@editComplain');
+
+	Route::get('/customers','CustomerController@customers');
+	Route::get('/add-customer-into-exord-id','CustomerController@addCustomersIntoExord');
+	Route::post('/add-customer-into-exord-id','CustomerController@saveCustomersIntoExord');
 });
 
 

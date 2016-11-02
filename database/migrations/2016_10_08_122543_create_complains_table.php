@@ -17,6 +17,7 @@ class CreateComplainsTable extends Migration
             $table->string('user_id');
             $table->string('username');
             $table->string('contact_no');
+            $table->string('connected_from');
             $table->text('complain');
             $table->text('support_given_by')->nullable();
             $table->integer('received_by')->unsigned();

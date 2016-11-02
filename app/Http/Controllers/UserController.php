@@ -20,6 +20,7 @@ class UserController extends Controller
     public function userRegistration(Request $request){
 
     	$validator = Validator::make($request->all(),[
+            'name' => 'required|max:100',
 			'username' => 'required|unique:users',
 			'password' => 'required',
 			're_pass' => 'required|same:password'
@@ -29,12 +30,27 @@ class UserController extends Controller
     		return redirect()->back()->withErrors($validator)->withInput();
     	}
 
-    	User::create([
-    		'username' => $request->input('username'),
-    		'password' => bcrypt($request->input('password'))
-    	]);
+        $data = $request->all();
+        $data['password'] = bcrypt($request->input('password'));
+        $data['photo'] = "";
 
-    	return redirect()->to('/register')->with('message','Sucessfully registered');
+        $photo = request()->file('photo');
+        if($photo){
+            $photo_name = str_random(20).'.'.$photo->extension();
+
+            if($photo->move(public_path('photo/admin-photo'),$photo_name)){
+                 $data['photo'] = $photo_name;
+                 User::create($data);
+                 if($this->userLogin($request)){
+                    return redirect()->to('/home')->with('message','Sucessfully registered');
+                 }
+                 return redirect()->to('/register')->with('message','Login Failed');
+            }else{
+                return $photo->getErrorMessage();
+            }
+        }
+
+
 
     }
 
@@ -61,7 +77,7 @@ class UserController extends Controller
         
         $data = $request->only('username','password');
         if(\Auth::guard('admin')->attempt($data)){
-            return redirect()->to('home');
+            return redirect()->intended('home');
         }else{
             return redirect()->to('/login')->with('message','Username/Password Wrong!');
         }

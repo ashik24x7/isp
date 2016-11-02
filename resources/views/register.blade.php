@@ -31,8 +31,12 @@
                 @endif
                     <h1>Registration</h1>
                     <h3>Create New account</h3>
-                    <form class="m-t" role="form" action="{{ url('/register') }}" method="post">
+                    <form class="m-t" role="form" action="{{ url('/register') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Fullname" value="{{ old('name') }}">
+                            <p class="errors"> {{ $errors->first('name') }}</p>
+                        </div>
                         <div class="form-group">
                             <input type="text" name="username" class="form-control" placeholder="Username" value="{{ old('username') }}">
                             <p class="errors"> {{ $errors->first('username') }}</p>
@@ -45,6 +49,9 @@
                         <div class="form-group">
                             <input type="password" name="re_pass" class="form-control" placeholder="Repeat Passowrd" value="{{ old('re_pass') }}">
                             <p class="errors"> {{ $errors->first('re_pass') }}</p>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="photo" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-primary btn-block ">Signup</button>
                         <a href="#"><small></small></a>

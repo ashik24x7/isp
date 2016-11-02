@@ -14,10 +14,11 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id')->unsigned()->index();
-            $table->integer('user_id')->unsigned()->index();
+            $table->string('user_id')->index();
+            $table->integer('fk_user_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('customer_details');
+            $table->foreign('fk_user_id')->references('id')->on('customer_details');
         });
     }
 

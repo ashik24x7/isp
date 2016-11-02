@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\CustomerDetail;
+use App\Customer;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\CustomerRequest;
 use Mail;
 use Validator;
 use Auth;
+use DB;
 
 class CustomerController extends Controller
 {
@@ -24,7 +26,7 @@ class CustomerController extends Controller
 
         $data = $request->all();
 
-        $data['password'] = str_random(6);
+        $data['password'] = bcrypt('pass');
 
 
 
@@ -55,11 +57,14 @@ class CustomerController extends Controller
 
 
     	$customer = new CustomerDetail;
-    	if($customer->create($data)){
+    	if($user = $customer->create($data)){
+            $email = !empty($data['email']) ? $data['email'] : "";
+
             $contents = '<h3>Hi '.$data['username'].', Your account has been successfully created. </h3>';
             $contents .= 'All the information of your account are given below<br><br><br>';
+            $contents .= 'Customer ID: '.$user->id.'<br><br>';
             $contents .= 'Contact No: '.$data['contact_no'].'<br><br>';
-            $contents .= 'Temporary Password: '.$data['password'].' <small style=\'color:red\'>*You should change this</small><br><br>';
+            $contents .= 'Temporary Password: pass <small style=\'color:red\'>*You should change this</small><br><br>';
             $contents .= 'Your Monthly bill is: '.$data['bill'].' TK<br><br>';
             $contents .= 'Your connection is establish at: '.date('d-m-Y',strtotime($data['connection_up'])).'<br><br><br>';
             $contents .= 'Thanks for being with us hope you will enjoy our services.<br><br>';
@@ -67,10 +72,12 @@ class CustomerController extends Controller
             $contents .= 'Exord Online Team';
 
             //return $contents;
-            Mail::send('mail.mail', ['data'=>['message'=>$contents]], function($mail){
-                $mail->to('ashik24x7@gmail.com')->from('no-reply@exordonline.com','Exord Online Limited')->subject('Account Confirmation');
-            });
-    		return redirect()->to('/register')->with('message','Sucessfully registered');
+            if($email){
+                Mail::send('mail.mail', ['data'=>['message'=>$contents]], function($mail) use($email){
+                    $mail->to($email)->from('no-reply@exordonline.com','Exord Online Limited')->subject('Account Confirmation');
+                });
+            }
+    		return redirect()->to('/home')->with('message','ID# '.$user->id.' has registered sucessfully');
 
     	}else{
 
@@ -118,6 +125,28 @@ class CustomerController extends Controller
     public function customerLogout(){
         \Auth::guard('customer')->logout();
         return redirect()->to('/customer-login');
+    }
+
+    public function customers(){
+        $customers = Customer::with('customer')->paginate(10);
+        return view('customers',compact('customers'));
+    }
+
+    public function addCustomersIntoExord(){
+        $customer = DB::select(DB::raw('SELECT `customer_details`.`id`,`customer_details`.`user_id`,`customers`.`user_id`,`customer_details`.`username`,`customers`.`fk_user_id` FROM `customer_details` LEFT JOIN `customers` ON `customer_details`.`id`=`customers`.`fk_user_id` WHERE `customers`.`fk_user_id` IS NULL'));
+        
+        $exord = Customer::where('fk_user_id',0)->get();
+        
+        return view('add-into-exord-id',compact('exord','customer'));
+    }
+
+    public function saveCustomersIntoExord(Request $request){
+        $customer = Customer::where('user_id',$request->exord_id)->first();
+        $customer->fk_user_id = $request->user_id;
+        $customer->save();
+
+        return redirect()->to('customers')->with('message','User ID: '.$request->user_id.' has added to '.$request->exord_id);
+
     }
 
 

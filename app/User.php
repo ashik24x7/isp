@@ -2,24 +2,18 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model implements Authenticatable
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    use \Illuminate\Auth\Authenticatable;
+
     protected $fillable = [
-        'username','password',
+        'username','password','photo','privilege','name'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    
     protected $hidden = [
         'remember_token','password'
     ];

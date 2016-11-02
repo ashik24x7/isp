@@ -8,10 +8,12 @@ use Carbon\Carbon;
 
 class Complain extends Model
 {
+	
     protected $fillable = [
 		'user_id',
 		'username',
 		'contact_no',
+		'connected_from',
 		'complain',
 		'support_given_by',
 		'received_by',
@@ -21,12 +23,28 @@ class Complain extends Model
 
 	protected $dates = [];
 
-	public function scopeLatest($query){
-		$query->whereDay->('created_at', date('d'))->orderBy('created_at','DESC');
+	public function received(){
+		return $this->belongsTo('App\User','received_by');
+	}
+	
+	public function solved(){
+		return $this->belongsTo('App\User','solved_by');
 	}
 
-	// public function setCreatedAtAttribute($date){
-	// 	$this->attributes['created_at'] = Carbon::createFromFormat('Y-m-d',$date);
-	// }
+	public function scopeToday($query){
+		$query->where('created_at', '>=', Carbon::today()->toDateString())->orderBy('created_at','DESC');
+	}
+	public function scopeWeek($query){
+		$query->where('created_at', '>=', Carbon::week()->toDateString())->orderBy('created_at','DESC');
+	}
+	public function scopeMonth($query){
+		$query->whereMonth('created_at', '=', date('m'))->orderBy('created_at','DESC');
+	}
+	public function scopeYear($query){
+		$query->whereYear('created_at', '=', date('Y'))->orderBy('created_at','DESC');
+	}
+	public function scopeAll($query){
+		$query->orderBy('created_at','DESC');
+	}
 	
 }
