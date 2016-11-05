@@ -110,7 +110,7 @@ class ComplainController extends Controller
 		$complain->solved_by = auth()->guard('admin')->user()->id;
 		$complain->save();
 
-		return redirect()->to('/complains')->with('message','The complain has solved');
+		return redirect()->to('/complains/all')->with('message','The complain has solved');
 
 	}
 

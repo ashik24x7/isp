@@ -44,6 +44,12 @@ Route::group(['middleware' => 'admin'],function(){
 	Route::get('/customers','CustomerController@customers');
 	Route::get('/add-customer-into-exord-id','CustomerController@addCustomersIntoExord');
 	Route::post('/add-customer-into-exord-id','CustomerController@saveCustomersIntoExord');
+	Route::post('/customers/search','CustomerController@search');
+
+
+	Route::get('/bills','BillController@showBills');
+	Route::post('/bill/pay','BillController@billPay');
+	Route::post('/bill/reset','BillController@billReset');
 });
 
 

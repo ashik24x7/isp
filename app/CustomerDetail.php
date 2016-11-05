@@ -28,6 +28,7 @@ class CustomerDetail extends Model implements Authenticatable
 		'note',
 		'customer_photo',
 		'id_or_passport',
+		'due',
     ];
 
     protected $hidden = [

@@ -143,10 +143,17 @@ class CustomerController extends Controller
     public function saveCustomersIntoExord(Request $request){
         $customer = Customer::where('user_id',$request->exord_id)->first();
         $customer->fk_user_id = $request->user_id;
+        $customer->updated_by = auth()->guard('admin')->user()->id;
         $customer->save();
 
         return redirect()->to('customers')->with('message','User ID: '.$request->user_id.' has added to '.$request->exord_id);
 
+    }
+
+
+    public function search(Request $request){
+        $customers = Customer::with('customer')->where('user_id','=',$request->user_id)->paginate(10);
+        return view('customers',compact('customers'));
     }
 
 

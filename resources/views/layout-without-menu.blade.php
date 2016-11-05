@@ -49,72 +49,6 @@
                     <a class="navbar-brand" href="#">Exord Accounts</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <!-- <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle button-wave" data-toggle="dropdown" aria-expanded="true">Mega Menu<span class="caret"></span></a>
-                            <ul class="dropdown-menu mega-dropdown-menu" style="width: 900px;">
-                                <li>
-                                    <div class="yamm-content">
-                                        <div class="row ">
-                                            <div class="col-sm-3 ">
-
-                                                <h3 class="yamm-category">Layout</h3>
-                                                <ul class="list-unstyled ">
-                                                    <li><a href="">Admin style 1</a></li>
-                                                    <li><a href="">Admin style 2</a></li>
-                                                    <li><a href="">Admin style 3</a></li>
-                                                    <li><a href="">Admin style 4</a></li>   
-                                                </ul>
-
-
-                                            </div>
-                                            <div class="col-sm-3">
-
-                                                <h3 class="yamm-category">Ui Kit</h3>
-                                                <ul class="list-unstyled ">
-                                                    <li><a href="">Typography</a></li>
-                                                    <li><a href="">Buttons</a></li>
-                                                    <li><a href="">Font Awesome</a></li>
-                                                    <li><a href="">Tabs & Alerts</a></li>
-                                                </ul>
-
-
-                                            </div>
-                                            <div class="col-sm-3">
-
-                                                <h3 class="yamm-category">Analytics</h3>
-                                                <ul class="list-unstyled ">
-                                                    <li><a href="">Flot</a></li>
-                                                    <li><a href="">Sparklines</a></li>
-                                                    <li><a href="">Morris</a></li>
-                                                    <li><a href="">Chart Js</a></li>
-                                                </ul>
-
-
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h3 class="yamm-category">Architecto</h3>
-                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle button-wave" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul> -->
-
                     <ul class="nav navbar-nav navbar-right navbar-top-drops">
                         <li class="dropdown"><a href="#" class="dropdown-toggle button-wave" data-toggle="dropdown"><i class="fa fa-envelope"></i> <span class="badge badge-xs badge-info">6</span></a>
 
@@ -266,9 +200,10 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-bar-chart"></i> <span class="nav-label">Billings Detail</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level collapse in" aria-expanded="true">
-                                    <li><a href="/complains/all">Complain History</a></li>
+                                <a href=""><i class="fa fa-bar-chart"></i> <span class="nav-label">Billings Detail</span><span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level" aria-expanded="true">
+                                    <li><a href="/bills/generate">Bill Sheet Generate</a></li>
+                                    <li><a href="/bills">Monthly Bill</a></li>
                                 </ul>
                             </li>
                              <li>

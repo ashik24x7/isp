@@ -21,6 +21,42 @@
             <div id="wrapper">
                 <div class="content-wrapper container">
                     <div class="row">
+                        
+
+                        <div class="col-md-12">
+                            <div class="panel panel-card margin-b-30">
+                                
+                                <div class="panel-body">
+                                    <div class="col-sm-8">
+                                        <div class="page-title" style="padding-bottom: 0px">
+                                            <h1>All Customers List<small></small></h1>
+                                            <ol class="breadcrumb">
+                                                <li><a href="#"><i class="fa fa-home"></i></a></li>
+                                                <li class="active">Customers</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="row">
+                                            
+                                            <form action="{{ url('customers/search') }}" method="post" role="form" class="form-inline pull-right">
+                                            {{ csrf_field() }}
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail2" class="sr-only">Exord ID</label>
+                                                    <input type="text" placeholder="Enter exord id" name="user_id" id="exampleInputEmail2" value="{{old('user_id')}}" class="form-control">
+                                                </div>
+                                                <button class="btn btn-primary" type="submit">Search</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- end .page title-->
+
+                    <div class="row">
                         <div class="col-md-12">
                             @if(session('message'))
                                 <p class="success"> {{ session('message') }} </p>
