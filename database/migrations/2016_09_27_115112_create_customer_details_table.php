@@ -29,7 +29,7 @@ class CreateCustomerDetailsTable extends Migration
             $table->string('address',50)->nullable();
             $table->string('floor',50);
             $table->string('bill',50);
-            $table->string('due',50);
+            $table->integer('balance');
             $table->date('connection_up');
             $table->string('connection_establishment_info',50);
             $table->string('connected_from',50);

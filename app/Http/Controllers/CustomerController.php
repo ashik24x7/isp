@@ -91,7 +91,7 @@ class CustomerController extends Controller
 
     public function dashboard(){
         $customer = Auth::guard('customer')->user();
-        // dd($customer);
+        
         return view('user-profile', compact('customer'));
     }
 

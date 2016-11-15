@@ -202,7 +202,7 @@
                             <li>
                                 <a href=""><i class="fa fa-bar-chart"></i> <span class="nav-label">Billings Detail</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level" aria-expanded="true">
-                                    <li><a href="/bills/generate">Bill Sheet Generate</a></li>
+                                    <li><a href="/receive-payment">Receive Payment</a></li>
                                     <li><a href="/bills">Monthly Bill</a></li>
                                 </ul>
                             </li>

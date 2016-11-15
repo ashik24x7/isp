@@ -17,8 +17,13 @@ class CreateTriggerForBills extends Migration
                    `user_id` = OLD.`user_id`,
                    `fk_user_id` = OLD.`fk_user_id`,
                    `bill` = OLD.`bill`,
+                   `due` = OLD.`due`,
+                   `total` = OLD.`total`,
+                   `pay` = OLD.`pay`,
+                   `due_after_pay` = OLD.`due_after_pay`,
+                   `tnx` = OLD.`tnx`,
                    `hit` = OLD.`hit`,
-                   `bill_of` = OLD.`bill_of`,
+                   `created_at` = OLD.`created_at`,
                    `updated_by` = OLD.`updated_by`
                 ');
     }

@@ -50,6 +50,9 @@ Route::group(['middleware' => 'admin'],function(){
 	Route::get('/bills','BillController@showBills');
 	Route::post('/bill/pay','BillController@billPay');
 	Route::post('/bill/reset','BillController@billReset');
+	Route::get('/receive-payment','BillController@showReceivePayment');
+	Route::post('/receive-payment','BillController@ReceivePayment');
+	Route::post('/find-user-data-for-payment','BillController@findUserDataPayment');
 });
 
 

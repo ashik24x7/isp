@@ -35,5 +35,9 @@ class CustomerDetail extends Model implements Authenticatable
         'remember_token','password'
     ];
 
+    public function thisMonthBill(){
+		return $this->belogsTo('App\Bill','id');
+	}
+
     
 }

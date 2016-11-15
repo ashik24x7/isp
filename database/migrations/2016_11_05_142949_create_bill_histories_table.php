@@ -16,9 +16,13 @@ class CreateBillHistoriesTable extends Migration
             $table->increments('id')->unsigned()->index();
             $table->string('user_id')->index();
             $table->integer('fk_user_id')->unsigned()->index();
-            $table->string('bill')->nullable();
+            $table->integer('bill');
+            $table->integer('due');
+            $table->integer('total');
+            $table->integer('pay')->nullable();
+            $table->integer('due_after_pay');
+            $table->string('tnx')->nullable();
             $table->string('hit')->nullable();
-            $table->timestamp('bill_of');
             $table->integer('updated_by')->unsigned();
             $table->timestamps();
 

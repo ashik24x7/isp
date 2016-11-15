@@ -5,15 +5,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Horizon-Admin - Admin</title>
+        <title>Exord - Admin</title>
 
         <!-- Bootstrap -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/waves.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="css/nanoscroller.css">
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/waves.min.css" type="text/css" rel="stylesheet"><link rel="stylesheet" href="/css/nanoscroller.css">
         <!--        <link rel="stylesheet" href="css/nanoscroller.css">-->
-        <link href="css/style.css" type="text/css" rel="stylesheet">
-        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/custom.css" type="text/css" rel="stylesheet">
+        <link href="/css/style.css" type="text/css" rel="stylesheet">
+        <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/css/custom.css" type="text/css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="account-col text-center">
-                    <h1>Horizon-Admin</h1>
+                    <h1>Exord-Admin</h1>
                     <h3>Log into your account</h3>
                     @if(session('message'))
                         <p class="error"> {{ session('message') }} </p>
