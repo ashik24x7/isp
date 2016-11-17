@@ -182,7 +182,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
+                                <a href="/home"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
                             </li>
                             <li class="active">
                                 <a href=""><i class="fa fa-envelope"></i> <span class="nav-label">Complain Detail</span><span class="fa arrow"></span></a>

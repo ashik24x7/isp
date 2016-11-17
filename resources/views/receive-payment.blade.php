@@ -221,7 +221,7 @@
                     $('input[name=contact_no]').val(e[0].contact_no);
                     $('input[name=bill]').val(e[0].bill);
                     $('input[name=due]').val(e[0].balance);
-                    $('input[name=fk_user_id]').val(e[0].id);
+                    $('input[name=fk_user_id]').val(e[0].fk_user_id);
                     if(e[0].house !== null){
                         $('input[name=adress]').val('House: '+e[0].house+', Road: '+e[0].road+', Block: '+e[0].block+', '+e[0].address);
                         $('input[name=total]').val(parseInt(e[0].bill)+parseInt(e[0].balance));

@@ -34,9 +34,7 @@ Route::group(['middleware' => 'admin'],function(){
 	Route::get('/logout','UserController@logout');
 	Route::get('/solved/{id}','ComplainController@solved');
 	
-	Route::get('/home',function(){
-		return view('home');
-	});
+	Route::get('/home','HomeController@home');
 
 	Route::get('/edit-complain/{id}','ComplainController@viewEditComplain');
 	Route::post('/edit-complain/{id}','ComplainController@editComplain');

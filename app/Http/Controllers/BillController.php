@@ -65,6 +65,7 @@ class BillController extends Controller
 
 
     public function ReceivePayment(Request $request){
+
         $data = [];
         $data['fk_user_id'] = $request->fk_user_id;
         $data['user_id'] = $request->user_id;
@@ -76,16 +77,14 @@ class BillController extends Controller
         $data['tnx'] = $request->tnx." : ".$request->tnx_id;
 
         $data['updated_by'] = auth()->guard('admin')->user()->id;
-
-        
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         $bill = Bill::whereIn('user_id',[$request->user_id])->update($data);
 
         if($bill){
             
-            CustomerDetail::whereIn('id',[$request->fk_user_id])->update([
-                'balance' => $data['due_after_pay']
-            ]);
+            $customer = CustomerDetail::find($data['fk_user_id']);
+            $customer->balance += $data['due_after_pay'];
+            $customer->save();
 
             return redirect()->to('receive-payment')->with('message','Payment has made successfully');
         }else{

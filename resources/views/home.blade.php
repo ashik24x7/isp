@@ -29,8 +29,8 @@
                         <div class="col-lg-4">
                             <div class="widget-box clearfix">
                                 <div class="pull-left">
-                                    <h4>User Performance</h4>
-                                    <h2>17,50</h2>
+                                    <h4>{{ \Carbon\Carbon::now()->format('F') }}'s Revenue</h4>
+                                    <h2>{{$month_revenue}}</h2>
                                 </div>
                                 <div class="text-right">
                                     <span id="sparkline8"></span>
@@ -42,32 +42,32 @@
                                 <div class="col-md-3">
                                     <div class="widget-box clearfix">
                                         <div>
-                                            <h4>New orders</h4>
-                                            <h2>580 <i class="fa fa-plus pull-right"></i></h2>
+                                            <h4>Unsolved Complain</h4>
+                                            <h2>{{$complain}} <i class="fa fa-plus pull-right"></i></h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="widget-box clearfix">
                                         <div>
-                                            <h4>Total sale today</h4>
-                                            <h2>$970 <i class="fa fa-shopping-cart pull-right"></i></h2>
+                                            <h4>Unpaid Bills</h4>
+                                            <h2>{{$unpaid_bill}} <i class="fa fa-tasks pull-right"></i></h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="widget-box clearfix">
                                         <div>
-                                            <h4>Pending Orders</h4>
-                                            <h2>256 <i class="fa fa-tasks pull-right"></i></h2>
+                                            <h4>Total Collection</h4>
+                                            <h2>{{$this_month_collection}}<i class="fa fa-usd pull-right"></i></h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="widget-box clearfix">
                                         <div>
-                                            <h4>Total Income</h4>
-                                            <h2>$9.7k <i class="fa fa-usd pull-right"></i></h2>
+                                            <h4>Today Income</h4>
+                                            <h2>{{$today_income}}<i class="fa fa-usd pull-right"></i></h2>
                                         </div>
                                     </div>
                                 </div>
