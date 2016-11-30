@@ -77,9 +77,6 @@
           disabled
           @endif
         ">Solved</button></a>
-        @if(empty($complain->solved_by))
-        <a href="/edit-complain/{{$complain->id}}"><button type="button" class="btn btn-primary">Edit</button></a>
-        @endif
       </div>
     </div>
   </div>

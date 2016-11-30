@@ -70,7 +70,7 @@
                                         <div class="col-md-2">
                                             <label class="col-md-12 control-label">User ID</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="User ID" class="form-control" name="user_id" value="{{ old('user_id')}}" required="required">
+                                                <input type="text" value="exord" placeholder="User ID" class="form-control" name="user_id" value="{{ old('user_id')}}" required="required" tabindex="1" >
                                                 <span class="validation_error">{{ $errors->first('user_id') }}</span>
                                             </div>
                                         </div>
@@ -139,7 +139,7 @@
                                         <div class="col-md-3">
                                             <label class="col-md-12 control-label">Payment</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="Payment" name="payment" class="form-control"> 
+                                                <input type="text" placeholder="Payment" name="payment" class="form-control" required="required" tabindex="2"> 
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -150,10 +150,11 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="col-md-12">
-                                               Payment Method: <input type="radio" name="tnx" value="Bkash" required> Bkash <input type="radio" name="tnx" value="Cash" required> Cash <input type="radio" name="tnx" value="Online Banking" required> Online Banking <input type="radio" name="tnx" value="Payment Gateway" required> Payment Gateway
+
+                                               Payment Method: <input type="radio" name="tnx" tabindex="5" value="Online Banking" required checked> Cash <input type="radio" tabindex="3" name="tnx" value="Bkash" required> Bkash <input type="radio" tabindex="4" name="tnx" value="Cash" required>Online Banking <input type="radio" name="tnx" tabindex="6" value="Payment Gateway" required> Payment Gateway
                                             </div>
                                             <div class="col-md-12">
-                                                <input type="text" name="tnx_id" placeholder="Transcation ID" class="form-control"> 
+                                                <input type="text" name="tnx_id" placeholder="Transcation ID" class="form-control" tabindex="7"> 
                                             </div>
                                         </div>
                                     </div>

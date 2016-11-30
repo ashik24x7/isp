@@ -36,7 +36,7 @@
                     {{ csrf_field() }}
                         <div class="form-group">
                             <div class="col-md-4">
-                                <input type="text" placeholder="User ID" class="form-control" name="user_id" value="{{ old('user_id')}}" required="required">
+                                <input type="text" placeholder="User ID" value="exord" class="form-control" name="user_id" value="{{ old('user_id')}}" required="required">
                                 <span class="validation_error">{{ $errors->first('user_id') }}</span>
                             </div>
                             <div class="col-md-8">

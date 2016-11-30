@@ -121,6 +121,7 @@
                         <div class="form-group">
                             <div class="col-md-12">
                             <br>
+                                <a href="/complains/all" class="btn btn-success btn-lg">Back</a>
                                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                             </div>
                         </div>

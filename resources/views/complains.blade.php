@@ -92,6 +92,9 @@
                                                 <strong>STATUS</strong>
                                             </th>
                                             <th class="text-center">
+                                                <strong>Edit</strong>
+                                            </th>
+                                            <th class="text-center">
                                                 <strong>VIEW</strong>
                                             </th>
 
@@ -131,6 +134,13 @@
                                                 <span class="label label-success">Solved</span>
                                             </td>
                                             @endif
+                                            <td class="text-center">
+                                                <a href="/edit-complain/{{$complain->id}}"><button type="button" class="btn btn-xs btn-primary
+                                                @if(!empty($complain->solved_by))
+                                                    disabled
+                                                @endif
+                                                ">Edit</button></a>
+                                            </td>
                                             <td class="text-center">
                                                 <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal{{$complain->id}}">View</button>
 
